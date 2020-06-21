@@ -33,7 +33,11 @@ def rc_time (pin_to_circuit):
 try:
     # Main loop
     while True:
-        print(rc_time(pin_to_circuit))
+        level = rc_time(pin_to_circuit))
+        print(level)
+        f = open("output.txt", "a")
+        f.write(level +"\n")
+        time.sleep(30)
 except KeyboardInterrupt:
     pass
 finally:
