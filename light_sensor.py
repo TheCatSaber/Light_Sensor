@@ -2,6 +2,7 @@
 
 import RPi.GPIO as GPIO
 import time
+from datetime import datetime
 
 __author__ = 'Gus (Adapted from Adafruit)'
 __license__ = "GPL"
@@ -33,10 +34,11 @@ def rc_time (pin_to_circuit):
 try:
     # Main loop
     while True:
-        level = rc_time(pin_to_circuit))
+        level = rc_time(pin_to_circuit)
         print(level)
-        f = open("output.txt", "a")
-        f.write(level +"\n")
+        if level < 100:
+          f = open("output.txt", "a")
+          f.write(str(level) +datetime.now()+"\n")
         time.sleep(30)
 except KeyboardInterrupt:
     pass
